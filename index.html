@@ -11,12 +11,33 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-indigo-100">
-    <div class="flex flex-col items-center">
-        <h5>Welcome to</h5>
-        <h1 class="font-bold text-2xl">Payoo Mobile App</h1>
-        <button class="btn btn-primary">Lets Go!</button>
+<body class="bg-[#f4f5f7] h-[100vh] flex flex-col justify-center items-center">
+    <div class="h-[130px] w-[300px]  bg-[url(./assets/bg.png)] bg-cover flex justify-center items-center">
+        <img src="./assets/Group.png" alt="">
     </div>
+    <form action="" class=" p-10 rounded-xl bg-white w-80">
+        <div>
+            <div>
+                <label for="">Phone Number</label>
+                <br>
+                <input id="phone-number" type="text" placeholder="Please enter your phone number"
+                    class="input bg-[#f4f5f7] mt-3 rounded-3xl" />
+            </div>
+            <div class="mt-5">
+                <label for="">Enter PIN</label>
+                <br>
+                <input id="pin-number" type="text" placeholder="Please enter 4 Digit PIN"
+                    class="input bg-[#f4f5f7]  mt-3 rounded-3xl" />
+            </div>
+            <div class="mt-5">
+                <button id="login-btn" class="btn bg-[#0874F2] text-white w-full rounded-3xl">Login</button>
+            </div>
+        </div>
+    </form>
+    </div>
+    </form>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
