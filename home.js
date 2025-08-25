@@ -1,4 +1,5 @@
 const validPin = 1234;
+const transactionData = [];
 
 // function to get input values -- reusable fucntion
 function getInputValueNumber(id) {
@@ -69,6 +70,12 @@ document
     const updatedBalance = currentBalance + amount;
     // document.getElementById("balance").innerText = updatedBalance;
     setInnerText(updatedBalance);
+
+    const data = {
+      name: "Add Money",
+      date: new Date().toLocaleString(),
+    };
+    transactionData.push(data);
   });
 
 // cash-out
@@ -80,6 +87,8 @@ document.getElementById("withdraw-btn").addEventListener("click", function (e) {
   const pinNumber = getInputValueNumber("cashout-pin-number");
   const currentBalance = getInnerText("balance");
   // console.log(amount, currentBalance);
+
+  
   if (agentNumber.length < 11) {
     alert("Enter vald agent number");
     return;
@@ -93,7 +102,42 @@ document.getElementById("withdraw-btn").addEventListener("click", function (e) {
   const updatedBalance = currentBalance - amount;
   // document.getElementById("balance").innerText = updatedBalance;
   setInnerText(updatedBalance);
+
+  const data = {
+    name: "Cash Out",
+    date: new Date().toLocaleString(),
+  };
+  transactionData.push(data);
 });
+
+//transaction-history
+document
+  .getElementById("transaction-btn")
+  .addEventListener("click", function () {
+    const transactionContainer = document.getElementById(
+      "transaction-container"
+    );
+    transactionContainer.innerText = "";
+    for (const data of transactionData) {
+      const div = document.createElement("div");
+      div.innerHTML = `<div class="flex justify-between items-center bg-white rounded-xl p-5 mt-3">
+                    <div class="flex items-center gap-x-5">
+                        <div class="p-3 rounded-full bg-[#f2f2f2]">
+                            <img src="./assets/wallet1.png" alt="">
+                        </div>
+                        <div>
+                            <h1 class="font-bold">${data.name}</h1>
+                            <p class="text-sm">${data.date}</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <i class="fa-solid fa-ellipsis-vertical text-xl"></i>
+                    </div>
+                </div>`;
+
+      transactionContainer.appendChild(div);
+    }
+  });
 
 // toggling
 document.getElementById("add-btn").addEventListener("click", function () {
@@ -118,3 +162,15 @@ document.getElementById("bonus-btn").addEventListener("click", function () {
   handleToggle("get-bonus-section");
   handleActive("bonus-btn");
 });
+
+document.getElementById("paybill-btn").addEventListener("click", function () {
+  handleToggle("paybill-section");
+  handleActive("paybill-btn");
+});
+
+document
+  .getElementById("transaction-btn")
+  .addEventListener("click", function () {
+    handleToggle("transaction-section");
+    handleActive("transaction-btn");
+  });
