@@ -57,7 +57,12 @@ document
     // console.log(bank, accountNumber, amount, pinNumber);
     // console.log(balance);
 
-    if (accountNumber.length < 11) {
+    if (amount <= 0) {
+      alert("Invalid Amount");
+      return;
+    }
+
+    if (amount.length < 11) {
       alert("Provide valid account number!");
       return;
     }
@@ -88,7 +93,11 @@ document.getElementById("withdraw-btn").addEventListener("click", function (e) {
   const currentBalance = getInnerText("balance");
   // console.log(amount, currentBalance);
 
-  
+  if (amount <= 0 || amount > currentBalance) {
+    alert("Invalid Amount!");
+    return;
+  }
+
   if (agentNumber.length < 11) {
     alert("Enter vald agent number");
     return;
