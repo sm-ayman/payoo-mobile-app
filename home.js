@@ -18,6 +18,29 @@ function getInnerText(id) {
 function setInnerText(value) {
   return (document.getElementById("balance").innerText = value);
 }
+
+// function to toggle
+function handleToggle(id) {
+  const forms = document.getElementsByClassName("form");
+  for (const form of forms) {
+    form.style.display = "none";
+  }
+  document.getElementById(id).style.display = "block";
+}
+
+// function to handle active form-btn
+function handleActive(id) {
+  const formBtn = document.getElementsByClassName("form-btn");
+  for (const btn of formBtn) {
+    btn.classList.remove("border-[#0874f2]", "bg-[#0874f20d]");
+    btn.classList.add("border-gray-300");
+  }
+  document
+    .getElementById(id)
+    .classList.add("border-[#0874f2]", "bg-[#0874f20d]");
+  document.getElementById(id).classList.remove("border-gray-300");
+}
+
 // add-money
 document
   .getElementById("add-money-btn")
@@ -74,11 +97,24 @@ document.getElementById("withdraw-btn").addEventListener("click", function (e) {
 
 // toggling
 document.getElementById("add-btn").addEventListener("click", function () {
-  document.getElementById("cash-out-section").style.display = "none";
-  document.getElementById("add-money-section").style.display = "block";
+  // document.getElementById("cash-out-section").style.display = "none";
+  // document.getElementById("transfer-money-section").style.display = "none";
+  // document.getElementById("add-money-section").style.display = "block";
+  handleToggle("add-money-section");
+  handleActive("add-btn");
 });
 
 document.getElementById("cashout-btn").addEventListener("click", function () {
-  document.getElementById("add-money-section").style.display = "none";
-  document.getElementById("cash-out-section").style.display = "block ";
+  handleToggle("cash-out-section");
+  handleActive("cashout-btn");
+});
+
+document.getElementById("transfer-btn").addEventListener("click", function () {
+  handleToggle("transfer-money-section");
+  handleActive("transfer-btn");
+});
+
+document.getElementById("bonus-btn").addEventListener("click", function () {
+  handleToggle("get-bonus-section");
+  handleActive("bonus-btn");
 });
